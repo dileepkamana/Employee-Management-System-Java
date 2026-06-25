@@ -1,5 +1,6 @@
 package EmployeeManagemtSystem;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -64,6 +65,21 @@ public class EmployeeService {
 			}
 		}
 		
+//		-------------SEARCH by NAME-----------------
+		public static void searchByName(HashMap<Integer, Employee> employees, Scanner sc) {
+			System.out.println("\nSearch Employee by Name: ");
+			String searchName = sc.nextLine();
+			boolean found = false;
+			for(Employee e : employees.values()) { //.contains() is a case-sensitive, that's why we use .toLowerCase() while checking two names
+				if(e.getName().toLowerCase().contains(searchName.toLowerCase())) {
+					System.out.println(e);
+					found = true;
+				}
+			}
+			if(!found) {
+				System.out.println("Name not Found....");
+			}
+		}
 //		----------------DELETE-----------------
 		public static void deleteEmployees(HashMap<Integer, Employee> employees, Scanner sc) {
 			System.out.println("\nDelete Employee by ID: ");
@@ -102,5 +118,19 @@ public class EmployeeService {
 			else {
 				System.out.println("ID Not Found");
 			}
+		}
+//		---------SORT by salary----------
+/*
+Why convert HashMap values into ArrayList before sorting?
+HashMap is an unordered collection and does not support sorting. 
+Therefore, I extract the values into an ArrayList and then sort the list using a Comparator.
+--------
+here, We need to tell Java: How do I compare two employees?
+Example:Dileep = 69000, Ravi   = 99000
+To sort, Java must decide: Which one comes first?
+That comparison logic is called a: Comparator
+*/
+		public static void sortBySalary(HashMap<Integer, Employee> employees) {
+			ArrayList<Employee> list = new ArrayList<>(employees.values());
 		}
 }
