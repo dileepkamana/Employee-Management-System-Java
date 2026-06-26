@@ -18,7 +18,9 @@ public class Main {
 			System.out.println("4. SEARCH by NAME");
 			System.out.println("5. DELETE Employees");
 			System.out.println("6. UPDATE Employees");
-			System.out.println("7. EXIT");
+			System.out.println("7. SORT Employees");
+			System.out.println("8. FILTER Employees");
+			System.out.println("9. EXIT");
 			
 			int option = sc.nextInt();
 			sc.nextLine();
@@ -34,11 +36,11 @@ public class Main {
 					break;
 				case 3:
 					EmployeeService.searchEmployees(employees, sc);
-					FileService.saveEmployees(employees);
+//					FileService.saveEmployees(employees);
 					break;
 				case 4:
 					EmployeeService.searchByName(employees, sc);
-					FileService.saveEmployees(employees);
+//					FileService.saveEmployees(employees);
 					break;
 				case 5:
 					EmployeeService.deleteEmployees(employees, sc);
@@ -49,6 +51,12 @@ public class Main {
 					FileService.saveEmployees(employees);
 					break;
 				case 7:
+					EmployeeService.sortEmployees(employees, sc);
+					break;
+				case 8:
+					EmployeeService.filterEmployees(employees, sc);
+					break;
+				case 9:
 					FileService.saveEmployees(employees);
 					System.out.println("\n----------EXIT-----------");
 					System.out.println("\nThank You");
